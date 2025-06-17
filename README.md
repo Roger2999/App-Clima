@@ -1,12 +1,68 @@
-# React + Vite
+# Aplicación del Clima
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta es una aplicación web desarrollada con React y Vite que permite consultar el clima actual de cualquier ciudad utilizando la API de OpenWeatherMap.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Búsqueda de clima por nombre de ciudad.
+- Visualización de temperatura, sensación térmica, humedad y estado del clima.
+- Animación de carga mientras se realiza la consulta.
+- Manejo de errores en la búsqueda.
 
-## Expanding the ESLint configuration
+## Tecnologías utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [@tanstack/react-query](https://tanstack.com/query/latest)
+- CSS
+
+## Instalación y uso
+
+1. Clona este repositorio:
+   ```bash
+   git clone <url-del-repositorio>
+   cd unknow-project
+   ```
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+3. Inicia la aplicación en modo desarrollo:
+   ```bash
+   npm run dev
+   ```
+4. Abre tu navegador en [http://localhost:5173](http://localhost:5173)
+
+## Estructura principal del proyecto
+
+```
+unknow-project/
+├── public/
+├── src/
+│   ├── components/
+│   │   └── SearchInput/
+│   ├── hooks/
+│   ├── pages/
+│   │   └── Home/
+│   ├── App.jsx
+│   └── main.jsx
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+## Configuración de la API
+
+La aplicación utiliza la API de OpenWeatherMap. Puedes cambiar la clave API en el archivo `src/pages/Home/Home.jsx`:
+
+```
+const API_KEY = "<tu_api_key_aqui>";
+```
+
+## Créditos
+
+Desarrollado por Roger.
+
+---
+
+¡Siéntete libre de contribuir o reportar issues!
