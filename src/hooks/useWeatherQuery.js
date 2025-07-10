@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 
-export const useWeatherQuery = (URL_BASE, city, API_KEY) => {
+export const useWeatherQuery = (URL_BASE, debounceValue, API_KEY) => {
   const fetchApi = async () => {
-    if (!city) {
+    if (!debounceValue) {
       // No hacer fetch si la ciudad está vacía
       return [];
     }
-    const response = await fetch(`${URL_BASE}?q=${city}&appid=${API_KEY}`);
+    const response = await fetch(
+      `${URL_BASE}?q=${debounceValue}&appid=${API_KEY}`
+    );
     if (!response.ok) {
       throw new Error("Error en la respuesta", response.status);
     }
@@ -19,7 +21,7 @@ export const useWeatherQuery = (URL_BASE, city, API_KEY) => {
     isError,
     error,
   } = useQuery({
-    queryKey: ["todos", city],
+    queryKey: ["todos", debounceValue],
     queryFn: fetchApi,
     staleTime: 60000,
   });
@@ -29,6 +31,5 @@ export const useWeatherQuery = (URL_BASE, city, API_KEY) => {
     isError,
     error,
     todos,
-    fetchApi,
   };
 };

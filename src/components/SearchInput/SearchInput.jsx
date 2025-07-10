@@ -1,11 +1,10 @@
 import "./SearchInput.css";
-export const SearchInput = ({ fetch, city, setCity }) => {
+export const SearchInput = ({ city, setCity }) => {
   const handleChange = (e) => {
     setCity(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (city.length > 0) fetch();
   };
   return (
     <>

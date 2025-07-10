@@ -2,26 +2,23 @@ import { useState } from "react";
 import SearchInput from "../../components/SearchInput/";
 import { useWeatherQuery } from "../../hooks/useWeatherQuery";
 import "./Home.css";
+import { useDebounce } from "../../hooks/useDebounce";
+import { difKelvin } from "../../utilites/const";
 export const Home = () => {
-  const difKelvin = 273.15; // Diferencia entre Kelvin y Celsius
   const [city, setCity] = useState("");
   const URL_BASE = "https://api.openweathermap.org/data/2.5/weather";
-  const API_KEY = "8d2c3cd8dd7a4568d19d8581d57a871f";
-  const { todos, error, isLoading, isError, fetchApi } = useWeatherQuery(
+  const API_KEY = import.meta.env.VITE_API_KEY; //API_KEY se define en archivo .env para que no este visible en el codigo fuente, luego se importa de esta manera
+  const { debounceValue } = useDebounce(city, 600);
+  const { todos, error, isLoading, isError } = useWeatherQuery(
     URL_BASE,
-    city,
+    debounceValue,
     API_KEY
   );
 
   return (
     <>
       <h1>Aplicacion del clima</h1>
-      <SearchInput
-        city={city}
-        setCity={setCity}
-        fetch={fetchApi}
-        isLoading={isLoading}
-      />
+      <SearchInput city={city} setCity={setCity} isLoading={isLoading} />
 
       {isLoading ? (
         <div
