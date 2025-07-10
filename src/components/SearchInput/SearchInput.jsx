@@ -24,4 +24,3 @@ export const SearchInput = ({ city, setCity }) => {
     </>
   );
 };
-export default SearchInput;

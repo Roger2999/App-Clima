@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchInput from "../../components/SearchInput/";
+import { SearchInput } from "../../components/SearchInput/";
 import { useWeatherQuery } from "../../hooks/useWeatherQuery";
 import "./Home.css";
 import { useDebounce } from "../../hooks/useDebounce";
@@ -67,4 +67,3 @@ export const Home = () => {
     </>
   );
 };
-export default Home;
